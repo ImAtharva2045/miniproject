@@ -1,0 +1,154 @@
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background-color: #f2f2f2;
+}
+
+h1, h2 {
+  margin-top: 0;
+}
+header {
+  position: relative;
+  padding: 50px 20px;
+  color: white;
+  text-align: center;
+
+  background: linear-gradient(
+      rgba(1, 11, 1, 0.8),
+      rgba(0, 14, 1, 0.8)
+  ),
+  url("banner.jpeg");
+
+  background-size: cover;
+  background-position: center;
+}
+nav {
+  background-color: #111827;
+  padding: 12px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 6px 12px;
+  border-radius: 4px;
+  transition: 0.3s;
+}
+nav a:hover {
+  background-color: darkgreen;
+}
+marquee {
+  width: 100%;
+  background-color: #111827;
+  color: white;
+  padding: 10px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+.row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px;
+}
+.box {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  border-top: 5px solid darkolivegreen;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+.box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+.box h2 {
+  color: #1f3c88;
+}
+.text {
+  width: 100%;
+}
+img {
+  width: 100px;
+  height: 100px;
+  margin-top: 10px;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+img:hover {
+  transform: scale(1.1);
+}
+.interest-image {
+  width: 250px;  
+  height: auto;
+  float:right;
+  margin-left: 20px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+th, td {
+  border: 1px solid darkolivegreen;
+  padding: 8px;
+  text-align: center;
+}
+
+th {
+  background-color: darkolivegreen;
+  color: white;
+}
+
+input[type="submit"] {
+  background-color: darkolivegreen;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: darkgreen;
+}
+
+video, audio {
+  width: 100%;
+}
+
+footer {
+  background-color: darkolivegreen;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  margin-top: 20px;
+}
+
+.iife{
+  color: darkgreen;
+  font-weight: bold;
+
+}
+.rest{
+  background-color: darkolivegreen;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.spread{
+  background-color: darkolivegreen;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}

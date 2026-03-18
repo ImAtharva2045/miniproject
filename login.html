@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Login - My Learning Hub</title>
+
+
+<style>
+
+
+body {
+   font-family: Arial, sans-serif;
+   margin: 0;
+   background-color: #f2f2f2;
+}
+
+
+header {
+   background-color: darkolivegreen;
+   color: white;
+   padding: 20px 0;
+   position: relative;
+   text-align: center;
+  
+}
+
+
+.header-center h1 {
+   margin: 0;
+   font-size: 32px;
+}
+
+
+.header-center p {
+   margin: 5px 0 0;
+   font-size: 14px;
+}
+
+
+.logo-svg {
+   position: absolute;
+   left: 30px;
+   top: 50%;
+   transform: translateY(-50%);
+   width: 250px;
+   height: auto;
+}
+
+
+nav {
+   background-color: #111827;
+   padding: 12px;
+   display: flex;
+   justify-content: center;
+   flex-wrap: wrap;
+   gap: 15px;
+}
+
+
+nav a {
+   color: white;
+   text-decoration: none;
+   font-weight: bold;
+   padding: 6px 12px;
+   border-radius: 4px;
+   transition: 0.3s;
+}
+
+
+nav a:hover {
+   background-color: darkgreen;
+}
+
+
+.row {
+   display: grid;
+   grid-template-columns: repeat(2, 1fr);
+   gap: 25px;
+   padding: 30px;
+   max-width: 900px;
+   margin: auto;
+}
+
+
+.box {
+   background-color: white;
+   padding: 25px;
+   border-radius: 10px;
+   border-top: 5px solid darkolivegreen;
+   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+   transition: 0.3s;
+}
+
+
+.box:hover {
+   transform: translateY(-5px);
+   box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+
+.box h2 {
+   color: #1f3c88;
+   text-align: center;
+}
+
+
+.form-group {
+   margin-bottom: 12px;
+}
+
+
+label {
+   font-weight: bold;
+}
+
+
+input, select {
+   width: 100%;
+   padding: 8px;
+   border-radius: 4px;
+   border: 1px solid #ccc;
+   margin-top: 4px;
+}
+
+
+input[type="radio"] {
+   width: auto;
+   margin-right: 5px;
+}
+
+
+.btn {
+   background-color: darkolivegreen;
+   color: white;
+   padding: 10px;
+   border-radius: 6px;
+   cursor: pointer;
+   width: 100%;
+   font-size: 16px;
+   border: none;
+   margin-top: 8px;
+}
+
+
+.btn:hover {
+   background-color: green;
+}
+
+
+footer {
+   background-color: darkolivegreen;
+   color: white;
+   text-align: center;
+   padding: 15px;
+   margin-top: 40px;
+}
+
+
+@media (max-width: 700px) {
+
+
+   .row {
+       grid-template-columns: 1fr;
+       padding: 15px;
+   }
+
+
+   nav {
+       flex-direction: column;
+       align-items: center;
+   }
+
+
+   header {
+       flex-direction: column;
+       text-align: center;
+   }
+}
+
+
+</style>
+</head>
+
+
+<body>
+
+
+<header>
+
+
+   <header>
+
+
+       <svg class="logo-svg" viewBox="0 0 400 120">
+           <defs>
+               <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                   <stop offset="0%" stop-color="#2E7D32" />
+                   <stop offset="100%" stop-color="#1B5E20" />
+               </linearGradient>
+  
+               <linearGradient id="bookGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                   <stop offset="0%" stop-color="#FFFFFF" />
+                   <stop offset="100%" stop-color="#F1F8E9" />
+               </linearGradient>
+           </defs>
+  
+           <circle cx="60" cy="60" r="45" fill="url(#grad)" />
+  
+           <g>
+               <rect x="40" y="45" width="40" height="30" fill="url(#bookGrad)" rx="3" />
+               <line x1="60" y1="45" x2="60" y2="75" stroke="#1B5E20" stroke-width="1.5" />
+               <rect x="40" y="45" width="5" height="30" fill="#C9A227" rx="2" />
+           </g>
+  
+           <g>
+               <polygon points="50,35 70,35 75,38 45,38" fill="#1B5E20" />
+               <ellipse cx="60" cy="38" rx="8" ry="3" fill="#1B5E20" />
+               <line x1="75" y1="37" x2="78" y2="42" stroke="#C9A227" stroke-width="1.5" />
+               <circle cx="78" cy="43" r="2" fill="#C9A227" />
+           </g>
+  
+           <text x="120" y="55" font-size="26" font-weight="bold" fill="white">
+               College Made
+               <tspan fill="#C9A227">Easy</tspan>
+           </text>
+  
+           <text x="120" y="78" font-size="14" fill="#E8F5E9" font-style="italic">
+               Your Gateway to Knowledge
+           </text>
+       </svg>
+  
+       <div class="header-center">
+           <h1>My Learning Hub</h1>
+           <p>Login & Student Registration</p>
+       </div>
+  
+   </header>
+  
+
+
+</header>
+
+
+<nav>
+   <a href="index.html">Home</a>
+   <a href="#">Courses</a>
+   <a href="#">About</a>
+   <a href="contact.html">Contact</a>
+   <a href="login.html">Login</a>
+</nav>
+
+
+
+
+<div class="row">
+
+
+   <div class="box">
+
+
+       <h2>Student Login</h2>
+
+
+       <form id="loginForm">
+
+
+           <div class="form-group">
+               <label>Username / Email</label>
+               <input type="email" id="loginEmail" placeholder="Enter email" required>
+               <small id="emailError" style="color:red;"></small>
+           </div>
+
+
+           <div class="form-group">
+               <label>Password</label>
+               <input type="password" id="loginPassword" placeholder="Enter password"
+                      required minlength="6" maxlength="12">
+               <small id="passwordError" style="color:red;"></small>
+
+
+
+
+           </div>
+
+
+           <div class="form-group">
+               <input type="submit" class="btn" value="Login">
+               <input type="reset" class="btn" value="Reset">
+           </div>
+           <p id="loginMsg" style="color:green; font-weight:bold;"></p>
+
+
+       </form>
+
+
+   </div>
+
+
+   <div class="box">
+
+
+       <h2>Student Registration</h2>
+
+
+       <form id="registerForm">
+
+
+           <div class="form-group">
+               <label>Full Name</label>
+               <input type="text" id="regName" placeholder="Enter name"
+                      required pattern="[A-Za-z ]{3,30}">
+               <small id="nameError" style="color:red;" ></small>
+
+
+           </div>
+
+
+           <div class="form-group">
+               <label>Email</label>
+               <input type="email" id="regEmail" placeholder="example@email.com" required>
+               <small id="regEmailError" style="color:red;" ></small>
+
+
+
+
+           </div>
+
+
+           <div class="form-group">
+               <label>Age</label>
+               <input type="number" id="regAge" min="18" max="60" required>
+               <small id="ageError" style="color:red;" ></small>
+           </div>
+
+
+           <div class="form-group">
+               <label>Gender</label><br>
+          
+
+
+               <input type="radio" name="gender" value="Male"> Male
+               <input type="radio" name="gender" value="Female"> Female
+               <input type="radio" name="gender" value="Other"> Other
+              
+           </div>
+
+
+           <div class="form-group">
+               <label>Department</label>
+
+
+               <select required id="regDept">
+                   <option value="">--Select--</option>
+                   <option>Information Technology</option>
+                   <option>Computer Science</option>
+                   <option>EXTC</option>
+               </select>
+               <small id="deptError" style="color:red" ></small>
+           </div>
+
+
+           <div class="form-group">
+               <label>Upload Resume</label>
+               <input type="file" id="regFile" accept=".pdf,.doc,.docx" required>
+               <small id="fileError" style="color:red" ></small>
+           </div>
+
+
+           <div class="form-group">
+               <label>Preferred Time</label>
+               <input type="time" required>
+           </div>
+
+
+           <div class="form-group">
+               <input type="submit" class="btn" value="Register">
+               <input type="reset" class="btn" value="Reset">
+           </div>
+           <p id="registerMsg" style="color:blue; font-weight:bold;"></p>
+
+       </form>
+
+
+   </div>
+
+
+</div>
+
+
+<footer>
+   <p>© 2026 My Learning Hub</p>
+   <p>Email: support@mylearninghub.com</p>
+</footer>
+
+
+<script>
+function Student(name, email, dept){
+ this.name = name;
+ this.email = email;
+ this.dept = dept;
+}
+function formatStudent(){
+ return this.name + " (" + this.dept + ")";
+}
+const showRegisterMessage = (student) => {
+ document.getElementById("registerMsg").innerText =
+  `Registered: ${student.name} (${student.dept})`;
+};
+let emailInput = document.getElementById("loginEmail");
+let emailError = document.getElementById("emailError");
+
+
+let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+
+emailInput.addEventListener("blur", function() {
+
+
+   let email = emailInput.value.trim();
+
+
+   if(email === ""){
+       emailError.innerText = "Email is required";
+   }
+   else if(!email.match(emailPattern)){
+       emailError.innerText = "Enter valid email";
+   }
+   else{
+       emailError.innerText = "";
+   }
+
+
+});
+let passwordInput = document.getElementById("loginPassword");
+let passwordError = document.getElementById("passwordError");
+
+
+passwordInput.addEventListener("blur", function(){
+
+
+   let password = passwordInput.value.trim();
+
+
+   if(password === ""){
+       passwordError.innerText = "Password is required";
+   }
+   else if(password.length < 6 || password.length > 12){
+       passwordError.innerText = "Password must be 6 to 12 characters";
+   }
+   else{
+       passwordError.innerText = "";
+   }
+
+
+});
+document.getElementById("loginForm").addEventListener("submit", function(e){
+
+let email = emailInput.value.trim();
+let password = passwordInput.value.trim();
+let isValid = true;
+if(email === "" || !email.match(emailPattern)){
+   emailError.innerText = "Enter valid email";
+   isValid = false;
+   
+}
+if(password === "" || password.length < 6 || password.length > 12){
+   passwordError.innerText = "Password must be 6-12 characters";
+   isValid = false;
+}
+if(!isValid){
+   e.preventDefault();
+ 
+}
+else{
+e.preventDefault();
+
+let attempts = loginAttempts();
+
+alert("Login Successful\nAttempts: " + attempts);
+setTimeout(function(){
+   this.submit();
+},100);
+
+
+  
+}
+});
+
+
+let nameInput = document.getElementById("regName");
+let nameError = document.getElementById("nameError");
+
+
+let namePattern = /^[A-Za-z ]{3,30}$/;
+
+
+nameInput.addEventListener("blur", function(){
+
+
+   let name = nameInput.value.trim();
+
+
+   if(!name.match(namePattern)){
+       nameError.innerText = "Name must be letters only (3-30 chars)";
+   }
+   else{
+       nameError.innerText = "";
+   }
+
+
+});
+let regEmailInput = document.getElementById("regEmail");
+let regEmailError = document.getElementById("regEmailError");
+
+
+let regEmailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+
+regEmailInput.addEventListener("blur", function(){
+
+
+   let email = regEmailInput.value.trim();
+
+
+   if(email === ""){
+       regEmailError.innerText = "Email is required";
+   }
+   else if(!email.match(regEmailPattern)){
+       regEmailError.innerText = "Enter valid email";
+   }
+   else{
+       regEmailError.innerText = "";
+   }
+
+
+});
+let ageInput = document.getElementById("regAge");
+let ageError = document.getElementById("ageError");
+
+
+ageInput.addEventListener("blur", function(){
+
+
+   let age = ageInput.value;
+
+
+   if(age < 18 || age > 60){
+       ageError.innerText = "Age must be between 18 and 60";
+   }
+   else{
+       ageError.innerText = "";
+   }
+
+
+});
+let deptInput = document.getElementById("regDept");
+let deptError = document.getElementById("deptError");
+
+
+deptInput.addEventListener("blur", function(){
+
+
+   if(deptInput.value === ""){
+       deptError.innerText = "Select department";
+   }
+   else{
+       deptError.innerText = "";
+   }
+
+
+});
+let fileInput = document.getElementById("regFile");
+let fileError = document.getElementById("fileError");
+
+
+fileInput.addEventListener("blur", function(){
+
+
+   if(fileInput.value === ""){
+       fileError.innerText = "Upload resume";
+   }
+   else{
+       fileError.innerText = "";
+   }
+
+
+});
+let genderRadios = document.querySelectorAll('input[name="gender"]');
+let genderError = document.getElementById("genderError");
+
+
+genderRadios.forEach(radio => {
+   radio.addEventListener("change", function(){
+
+
+       let gender = document.querySelector('input[name="gender"]:checked');
+
+
+       if(!gender){
+           genderError.innerText = "Select gender";
+       }
+       else{
+           genderError.innerText = "";
+       }
+
+
+   });
+});
+
+
+document.getElementById("registerForm").addEventListener("submit", function(e){
+
+
+let nameInput  = document.getElementById("regName");
+let regEmailInput = document.getElementById("regEmail");
+let ageInput   = document.getElementById("regAge");
+let deptInput  = document.getElementById("regDept");
+let fileInput  = document.getElementById("regFile");
+
+
+let nameError  = document.getElementById("nameError");
+let regEmailError = document.getElementById("regEmailError");
+let ageError   = document.getElementById("ageError");
+let genderError= document.getElementById("genderError");
+let deptError  = document.getElementById("deptError");
+let fileError  = document.getElementById("fileError");
+
+
+let name  = nameInput.value.trim();
+let email = regEmailInput.value.trim();
+let age   = ageInput.value;
+let dept  = deptInput.value;
+let file  = fileInput.value;
+
+
+let gender = document.querySelector('input[name="gender"]:checked');
+
+
+let namePattern  = /^[A-Za-z ]{3,30}$/;
+let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+
+let isValid = true;
+
+
+if(name === "" || !name.match(namePattern)){
+   nameError.innerText = "Name must be letters only (3-30 chars)";
+   isValid = false;
+}
+
+
+if(email === "" || !email.match(emailPattern)){
+   regEmailError.innerText = "Enter valid email";
+   isValid = false;
+}
+
+
+if(age < 18 || age > 60){
+   ageError.innerText = "Age must be between 18 and 60";
+   isValid = false;
+}
+
+
+if(!gender){
+   genderError.innerText = "Select gender";
+   isValid = false;
+}
+
+
+if(dept === ""){
+   deptError.innerText = "Select department";
+   isValid = false;
+}
+
+
+if(file === ""){
+   fileError.innerText = "Upload resume";
+   isValid = false;
+}
+
+
+if(!isValid){
+   e.preventDefault();
+}
+else{
+   e.preventDefault();
+   let student = new Student(name, email, dept);
+//    let message = formatStudent.call(student);
+//    showRegisterMessage(student);
+    // let message = formatStudent.call(student);
+    // document.getElementById("registerMsg").innerText =
+//     // "Registered: " + message + "";
+// let message = formatStudent.apply(student);
+
+// document.getElementById("registerMsg").innerText =
+//  "Registered: " + message + "";
+}
+let getStudent = formatStudent.bind(student);
+
+let message = getStudent();
+
+document.getElementById("registerMsg").innerText =
+ "Registered: " + message + "";
+
+});
+function createLoginTracker(){
+
+let count = localStorage.getItem("loginCount") || 0;
+
+return function(){
+   count++;
+   localStorage.setItem("loginCount", count);
+   return count;
+};
+}
+let loginAttempts = createLoginTracker();
+
+
+
+   </script>
+  
+
+
+</body>
+</html>

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Contact - My Learning Hub</title>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+
+<style>
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f2f2f2;
+}
+
+header {
+    background-color: darkolivegreen;
+    color: white;
+    padding: 30px 0;
+    position: relative;
+    text-align: center;
+}
+
+.logo-svg {
+    position: absolute;
+    left: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 260px;
+}
+
+.header-center h1 {
+    margin: 0;
+    font-size: 32px;
+}
+
+.header-center p {
+    margin: 5px 0 0;
+    font-size: 14px;
+}
+
+nav {
+    background-color: #111827;
+    padding: 12px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 6px 12px;
+    border-radius: 4px;
+}
+
+nav a:hover {
+    background-color: darkgreen;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    padding: 30px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.box {
+    background-color: white;
+    padding: 25px;
+    border-radius: 10px;
+    border-top: 5px solid darkolivegreen;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+label {
+    font-weight: bold;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+textarea { resize: vertical; }
+
+input[type="submit"] {
+    background-color: darkolivegreen;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+input[type="submit"]:hover {
+    background-color: darkgreen;
+}
+
+small {
+    display: block;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    font-size: 13px;
+}
+
+#map {
+    width: 100%;
+    height: 300px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+footer {
+    background-color: darkolivegreen;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 40px;
+}
+
+@media (max-width: 700px) {
+    .row { grid-template-columns: 1fr; }
+}
+
+</style>
+</head>
+
+<body>
+
+    <header>
+
+        <svg class="logo-svg" viewBox="0 0 400 120">
+            <defs>
+                <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#2E7D32" />
+                    <stop offset="100%" stop-color="#1B5E20" />
+                </linearGradient>
+    
+                <linearGradient id="bookGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#FFFFFF" />
+                    <stop offset="100%" stop-color="#F1F8E9" />
+                </linearGradient>
+            </defs>
+    
+            <circle cx="60" cy="60" r="45" fill="url(#grad)" />
+    
+            <g>
+                <rect x="40" y="45" width="40" height="30" fill="url(#bookGrad)" rx="3" />
+                <line x1="60" y1="45" x2="60" y2="75" stroke="#1B5E20" stroke-width="1.5" />
+                <rect x="40" y="45" width="5" height="30" fill="#C9A227" rx="2" />
+            </g>
+    
+            <g>
+                <polygon points="50,35 70,35 75,38 45,38" fill="#1B5E20" />
+                <ellipse cx="60" cy="38" rx="8" ry="3" fill="#1B5E20" />
+                <line x1="75" y1="37" x2="78" y2="42" stroke="#C9A227" stroke-width="1.5" />
+                <circle cx="78" cy="43" r="2" fill="#C9A227" />
+            </g>
+    
+            <text x="120" y="55" font-size="26" font-weight="bold" fill="white">
+                College Made 
+                <tspan fill="#C9A227">Easy</tspan>
+            </text>
+    
+            <text x="120" y="78" font-size="14" fill="#E8F5E9" font-style="italic">
+                Your Gateway to Knowledge
+            </text>
+        </svg>
+    
+        <div class="header-center">
+            <h1>My Learning Hub</h1>
+            <p>Contact & Location Information</p>
+        </div>
+    
+    </header>
+<nav>
+    <a href="index.html">Home</a>
+    <a href="#">Courses</a>
+    <a href="#">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="login.html">Login</a>
+</nav>
+
+<div class="row">
+
+<div class="box">
+<h2>Get in Touch</h2>
+
+<form id="contactForm">
+
+<label>Full Name</label>
+<input type="text" id="contactName" placeholder="Enter your full name">
+<small id="nameError" style="color:red;"></small>
+
+<label>Email</label>
+<input type="email" id="contactEmail" placeholder="example@gmail.com">
+<small id="emailError" style="color:red;"></small>
+
+<label>Phone</label>
+<input type="tel" id="contactPhone" placeholder="Enter 10 digit phone number">
+<small id="phoneError" style="color:red;"></small>
+
+<label>Subject</label>
+<input type="text" id="contactSubject" placeholder="Enter subject (5-50 characters)">
+<small id="subjectError" style="color:red;"></small>
+
+<label>Message</label>
+<textarea id="contactMessage" rows="5" placeholder="Write your message"></textarea>
+<small id="messageError" style="color:red;"></small>
+
+<input type="submit" value="Send Message">
+<p id="out7" style="color:green;"></p>
+
+</form>
+</div>
+
+<div class="box">
+<h2>Contact Information</h2>
+<p><b>Email:</b> support@mylearninghub.com</p>
+<p><b>Phone:</b> +91 98765 43210</p>
+<p><b>Address:</b><br>
+K. J. Somaiya College of Engineering<br>
+Vidyavihar, Mumbai, India
+</p>
+<hr>
+<h3>Our Location</h3>
+<div id="map"></div>
+</div>
+
+</div>
+
+<footer>© 2026 My Learning Hub</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+function showContact(name = "Guest", subject = "General Query"){
+ return name + " sent a message about " + subject;
+}
+
+const map = L.map('map').setView([19.0735, 72.8996], 17);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+const svgIcon = L.divIcon({
+    className: "custom-marker",
+    html: `
+    <svg width="40" height="40" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="40"
+        fill="rgba(85,107,47,0.25)" />
+        <circle cx="50" cy="50" r="25"
+        fill="white"
+        stroke="darkolivegreen"
+        stroke-width="6"/>
+        <circle cx="50" cy="50" r="10"
+        fill="darkolivegreen"/>
+
+    </svg>
+    `,
+    iconSize: [40,40],
+    iconAnchor: [20,20]
+});
+
+L.marker([19.0735, 72.8996], {icon: svgIcon}).addTo(map)
+.bindPopup("K. J. Somaiya College of Engineering<br>Vidyavihar, Mumbai")
+.openPopup();
+
+let namePattern = /^[A-Za-z ]{3,30}$/;
+let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+let phonePattern = /^[0-9]{10}$/;
+let subjectPattern = /^[A-Za-z0-9 ]{5,50}$/;
+
+contactName.addEventListener("blur", function(){
+    nameError.innerText = namePattern.test(this.value.trim()) ? "" :
+    "Name must be letters only (3-30 chars)";
+});
+
+contactEmail.addEventListener("blur", function(){
+    emailError.innerText = emailPattern.test(this.value.trim()) ? "" :
+    "Enter valid email";
+});
+
+contactPhone.addEventListener("blur", function(){
+    phoneError.innerText = phonePattern.test(this.value.trim()) ? "" :
+    "Phone must be 10 digits";
+});
+
+contactSubject.addEventListener("blur", function(){
+    subjectError.innerText = subjectPattern.test(this.value.trim()) ? "" :
+    "Subject must be 5-50 characters (letters & numbers only)";
+});
+
+contactMessage.addEventListener("blur", function(){
+    messageError.innerText = this.value.trim().length >= 10 ? "" :
+    "Message must be at least 10 characters";
+});
+
+document.getElementById("contactForm").addEventListener("submit", function(e){
+   
+
+    let name = contactName.value.trim();
+    let subject = contactSubject.value.trim();
+    let message = showContact(name || undefined, subject || undefined);
+    document.getElementById("out7").innerText = message;
+
+    let valid =
+        namePattern.test(contactName.value.trim()) &&
+        emailPattern.test(contactEmail.value.trim()) &&
+        phonePattern.test(contactPhone.value.trim()) &&
+        subjectPattern.test(contactSubject.value.trim()) &&
+        contactMessage.value.trim().length >= 10;
+
+    if(!valid){
+        e.preventDefault();
+    } else {
+        e.preventDefault();
+        alert("Message Sent Successfully");
+    }
+
+});
+
+
+</script>
+
+</body>
+</html>

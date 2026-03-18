@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>College Made Easy....</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+
+<body>
+
+<header>
+    <svg class="logo-svg" width="350" height="100" viewBox="0 0 400 120">
+        <defs>
+            <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#2E7D32" />
+                <stop offset="100%" stop-color="#1B5E20" />
+            </linearGradient>
+    
+            <linearGradient id="bookGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#FFFFFF" />
+                <stop offset="100%" stop-color="#F1F8E9" />
+            </linearGradient>
+        </defs>
+    
+        <circle cx="60" cy="60" r="45" fill="url(#grad)" />
+    
+        <g>
+            <rect x="40" y="45" width="40" height="30" fill="url(#bookGrad)" rx="3" />
+            <line x1="60" y1="45" x2="60" y2="75" stroke="#1B5E20" stroke-width="1.5" />
+            <rect x="40" y="45" width="5" height="30" fill="#C9A227" rx="2" />
+        </g>
+    
+        <g>
+            <polygon points="50,35 70,35 75,38 45,38" fill="#1B5E20" />
+            <ellipse cx="60" cy="38" rx="8" ry="3" fill="#1B5E20" />
+            <line x1="75" y1="37" x2="78" y2="42" stroke="#C9A227" stroke-width="1.5" />
+            <circle cx="78" cy="43" r="2" fill="#C9A227" />
+        </g>
+    
+        <text x="120" y="55" font-size="26" font-weight="bold" fill="white">
+            College Made 
+            <tspan fill="#C9A227">Easy</tspan>
+        </text>
+    
+        <text x="120" y="78" font-size="14" fill="#E8F5E9" font-style="italic">
+            Your Gateway to Knowledge
+        </text>
+    </svg>
+    <p class="iife" id="appStatus"></p>
+    
+    
+</header>
+
+<nav>
+    <a href="#">Home</a>
+    <a href="#">Courses</a>
+    <a href="#">About</a>
+    <a href="contact.html" target="_blank">Contact</a>
+    <a href="login.html" target="_blank">Login</a>
+    <marquee behavior="scroll" direction="left" 
+         style="background-color:#111827; color:white; padding: 10px; font-weight: bold ;">
+    New Python Course launching soon! | Admissions Open for Web Development Batch | Free HTML Course Available Now
+</marquee>
+</nav>
+
+
+<div class="row">
+
+    <div class="box">
+        <h2>Welcome</h2>
+        <p>My Learning Hub is an online platform that provides quality education in Web Technologies and Programming.</p>
+        <hr>
+        <center>
+            <img src="images.jpeg" alt="Learning Image">
+            <br><br>
+    
+            <b>Learning Made Easy</b>
+        </center>
+        
+    </div>
+
+    <div class="box">
+        <div class="text">
+            <h2>Our Features</h2>
+    
+            <ul>
+                <li><b>Online Courses</b> - Structured and beginner-friendly modules.</li>
+                <br>
+                <li><b>Video Tutorials</b> - High-quality recorded lectures.</li>
+                <br>
+                <li><b>Practice Tests</b> - Test your knowledge with real exercises.</li>
+                <br>
+                <li><b>Certificates</b> - Earn recognition after course completion.</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="box">
+        <h2>About Us</h2>
+        <p>This website helps students and beginners learn programming concepts through structured courses and multimedia lessons.</p>
+        <p>
+            Our mission is to make learning accessible, engaging, 
+            and career-oriented for every aspiring developer.
+        </p>
+    </div>
+
+</div>
+
+
+<div class="row">
+
+    <div class="box">
+        <h2>Course Details</h2>
+
+        <table>
+            <caption><b>Available Courses</b></caption>
+            <tr>
+                <th>Course</th>
+                <th>Duration</th>
+                <th>Fee</th>
+            </tr>
+            <tr>
+                <td>HTML</td>
+                <td>2 Weeks</td>
+                <td>Free</td>
+            </tr>
+            <tr>
+                <td>CSS</td>
+                <td>3 Weeks</td>
+                <td>₹499</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="box">
+        <h2>Select Your Learning Interest</h2>
+
+        <p>Please choose the language you are interested in learning:</p>
+        <img src="htmlcssjs.png" class="interest-image" alt="Web Development">
+
+        <form>
+            <input type="radio" name="language" value="HTML"> HTML <br><br>
+            <input type="radio" name="language" value="CSS"> CSS <br><br>
+            <input type="radio" name="language" value="JavaScript"> JavaScript <br><br>
+            <input type="radio" name="language" value="Python"> Python <br><br>
+
+            <input type="submit" value="Submit">
+        </form>
+       
+    </div>
+
+    <div class="box">
+        <h2>Why Choose Us</h2>
+    
+        <ul>
+            <li><b>Expert Mentors</b> - Learn from experienced professionals and industry experts.</li>
+            <br>
+            <li><b>Live Doubt Solving</b> - Interactive sessions to clarify concepts instantly.</li>
+            <br>
+            <li><b>Industry Projects</b> - Work on real-world projects to build practical skills.</li>
+            <br>
+            <li><b>Placement Guidance</b> - Career support and interview preparation assistance.</li>
+        </ul>
+    </div>
+    
+    
+
+    <div class="box">
+        <h2>Announcements</h2>
+        <p><b>New Python Course</b> launching soon.</p>
+        <p>Admissions open for Web Development batch.</p>
+    </div>
+    <div class="box">
+        <h2>Fun Features</h2>
+      
+        <p><b>Rest Parameter Example:</b></p>
+      
+        <pre style="background:#111827;color:white;padding:10px;border-radius:6px;border: 3px solid darkolivegreen;">
+      function total(...nums){
+       return nums.reduce((x,y)=>x+y);
+      }
+      
+      total(1,2,3,4);
+        </pre>
+      
+        <button class="rest" onclick="restDemo()">Run Rest</button>
+        <p id="out8"></p>
+      
+        <hr>
+      
+        <p><b>Spread Operator Example:</b></p>
+      
+        <pre style="background:#111827;color:white;padding:10px;border-radius:6px;border: 3px solid darkolivegreen;">
+      const arr = [10,20,30];
+      
+      Math.max(...arr);
+        </pre>
+      
+        <button class="spread" onclick="spreadDemo()">Run Spread</button>
+        <p id="out9"></p>
+      
+      </div>
+
+
+
+</div>
+
+
+<footer>
+    <p>© 2026 My Learning Hub</p>
+    <p>Email: support@mylearninghub.com</p>
+</footer>
+<script>
+ (function(){
+ document.getElementById("appStatus").innerText = "App initialized...";
+})();
+function total(...nums){
+ return nums.reduce((x,y)=>x+y);
+}
+
+function restDemo(){
+ document.getElementById("out8").innerText =
+  "Sum: " + total(1,2,3,4);
+}
+function spreadDemo(){
+ const arr = [10,20,30];
+ document.getElementById("out9").innerText =
+  "Max: " + Math.max(...arr);
+}
+</script>
+</body>
+</html>
