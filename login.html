@@ -129,6 +129,7 @@ input[type="radio"] {
 }
 
 
+
 .btn {
    background-color: darkolivegreen;
    color: white;
@@ -153,6 +154,7 @@ footer {
    text-align: center;
    padding: 15px;
    margin-top: 40px;
+
 }
 
 
@@ -243,10 +245,10 @@ footer {
 
 <nav>
    <a href="index.html">Home</a>
-   <a href="#">Courses</a>
    <a href="#">About</a>
    <a href="contact.html">Contact</a>
    <a href="login.html">Login</a>
+   <a href="cources.html" >Courses</a>
 </nav>
 
 
@@ -277,11 +279,7 @@ footer {
                       required minlength="6" maxlength="12">
                <small id="passwordError" style="color:red;"></small>
 
-
-
-
            </div>
-
 
            <div class="form-group">
                <input type="submit" class="btn" value="Login">
@@ -314,14 +312,10 @@ footer {
 
            </div>
 
-
            <div class="form-group">
                <label>Email</label>
                <input type="email" id="regEmail" placeholder="example@email.com" required>
                <small id="regEmailError" style="color:red;" ></small>
-
-
-
 
            </div>
 
@@ -481,6 +475,14 @@ setTimeout(function(){
    this.submit();
 },100);
 
+let loginObj = {
+    email: email,
+    password: password
+};
+
+let jsonSend = JSON.stringify(loginObj);
+
+window.location.href = "index.html?data=" + encodeURIComponent(jsonSend);
 
   
 }
@@ -642,12 +644,10 @@ let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
 
 let isValid = true;
 
-
 if(name === "" || !name.match(namePattern)){
    nameError.innerText = "Name must be letters only (3-30 chars)";
    isValid = false;
 }
-
 
 if(email === "" || !email.match(emailPattern)){
    regEmailError.innerText = "Enter valid email";
@@ -684,25 +684,28 @@ if(!isValid){
 }
 else{
    e.preventDefault();
-   let student = new Student(name, email, dept);
-//    let message = formatStudent.call(student);
-//    showRegisterMessage(student);
-    // let message = formatStudent.call(student);
-    // document.getElementById("registerMsg").innerText =
-//     // "Registered: " + message + "";
-// let message = formatStudent.apply(student);
 
-// document.getElementById("registerMsg").innerText =
-//  "Registered: " + message + "";
+   let student = {
+       name: name,
+       email: email,
+       age: age,
+       dept: dept
+   };
+
+   let jsonData = JSON.stringify(student);
+
+   jsonData = jsonData.replace(name, name.toUpperCase());
+
+   localStorage.setItem("studentData", jsonData);
+
+   let stored = localStorage.getItem("studentData");
+
+   let parsed = JSON.parse(stored);
+
+   document.getElementById("registerMsg").innerText =
+       "Registered: " + parsed.name + " (" + parsed.dept + ")";
 }
-let getStudent = formatStudent.bind(student);
-
-let message = getStudent();
-
-document.getElementById("registerMsg").innerText =
- "Registered: " + message + "";
-
-});
+}); 
 function createLoginTracker(){
 
 let count = localStorage.getItem("loginCount") || 0;

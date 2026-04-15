@@ -184,7 +184,7 @@ footer {
     </header>
 <nav>
     <a href="index.html">Home</a>
-    <a href="#">Courses</a>
+    <a href="cources.html">Courses</a>
     <a href="#">About</a>
     <a href="contact.html">Contact</a>
     <a href="login.html">Login</a>
@@ -327,8 +327,29 @@ document.getElementById("contactForm").addEventListener("submit", function(e){
         e.preventDefault();
     } else {
         e.preventDefault();
+        let contactObj = {
+            name: contactName.value,
+            email: contactEmail.value,
+            phone: contactPhone.value,
+            subject: contactSubject.value,
+            message: contactMessage.value
+        };
+
+       let jsonContact = JSON.stringify(contactObj);
+
+       jsonContact = jsonContact.replace(contactObj.name, contactObj.name.toUpperCase());
+
+       localStorage.setItem("contactData", jsonContact);
+
+       let stored = localStorage.getItem("contactData");
+
+       let parsed = JSON.parse(stored);
+
+       document.getElementById("out7").innerText =
+        "Saved: " + parsed.name + " - " + parsed.subject;
+
         alert("Message Sent Successfully");
-    }
+        }
 
 });
 

@@ -54,7 +54,7 @@
 
 <nav>
     <a href="#">Home</a>
-    <a href="#">Courses</a>
+    <a href="cources.html" target="_blank">Courses</a>
     <a href="#">About</a>
     <a href="contact.html" target="_blank">Contact</a>
     <a href="login.html" target="_blank">Login</a>
@@ -201,7 +201,26 @@
         <p id="out9"></p>
       
       </div>
-
+      <div class="box">
+        <h2 style="color:#1f3c88;">Students Learning With Us</h2>
+        
+        <p style="text-align:center; font-size:14px; color:#555;">
+            Below is a sample list of students currently enrolled in our learning platform.
+        </p>
+        <hr>
+        <div id="jsonTable"></div>
+    </div>
+    <div class="box">
+        <h2 style="color:#1f3c88;">Select Student</h2>
+        
+        <p style="text-align:center; font-size:14px; color:#555;">
+            Choose a student from the list generated.
+        </p>
+    
+        <hr>
+    
+        <div id="jsonDropdown"></div>
+    </div>
 
 
 </div>
@@ -228,6 +247,51 @@ function spreadDemo(){
  document.getElementById("out9").innerText =
   "Max: " + Math.max(...arr);
 }
+let params = new URLSearchParams(window.location.search);
+let data = params.get("data");
+
+if(data){
+    let obj = JSON.parse(decodeURIComponent(data));
+
+    document.getElementById("appStatus").innerText =
+        "Welcome " + obj.email;
+}
+const xmlhttp = new XMLHttpRequest();
+
+xmlhttp.onload = function() {
+    let myObj = JSON.parse(this.responseText);
+
+    let text = "<table border='1'><tr><th>Name</th><th>Dept</th></tr>";
+
+    for (let i = 0; i < myObj.length; i++) {
+        text += "<tr><td>" + myObj[i].name + "</td><td>" + myObj[i].dept + "</td></tr>";
+    }
+
+    text += "</table>";
+
+    document.getElementById("jsonTable").innerHTML = text;
+};
+
+xmlhttp.open("GET", "students.json", true);
+xmlhttp.send();
+const xmlhttp2 = new XMLHttpRequest();
+
+xmlhttp2.onload = function() {
+    let data = JSON.parse(this.responseText);
+
+    let select = "<select><option disabled selected>Select Student</option>";
+
+    for (let i = 0; i < data.length; i++) {
+        select += "<option>" + data[i].name + "</option>";
+    }
+
+    select += "</select>";
+
+    document.getElementById("jsonDropdown").innerHTML = select;
+};
+
+xmlhttp2.open("GET", "students.json", true);
+xmlhttp2.send();
 </script>
 </body>
 </html>

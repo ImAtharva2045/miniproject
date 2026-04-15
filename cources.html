@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Courses - My Learning Hub</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f2f2f2;
+}
+
+header {
+    background-color: darkolivegreen;
+    color: white;
+    padding: 20px 0;
+    position: relative;
+    text-align: center;
+    padding: 50px;
+}
+
+.header-center h1 {
+    margin: 0;
+    font-size: 32px;
+}
+
+.header-center p {
+    margin: 5px 0 0;
+    font-size: 14px;
+}
+
+.logo-svg {
+    position: absolute;
+    left: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 250px;
+    height: auto;
+}
+
+nav {
+    background-color: #111827;
+    padding: 12px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 6px 12px;
+    border-radius: 4px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    background-color: darkgreen;
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+}
+
+.course {
+    background: white;
+    padding: 15px 18px;
+    margin: 10px 0;
+    border-left: 6px solid darkolivegreen;
+    border-radius: 8px;
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background 0.2s, color 0.2s, transform 0.15s, box-shadow 0.2s;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.course:hover {
+    transform: translateX(4px);
+    box-shadow: 0 3px 12px rgba(85,107,47,0.15);
+}
+
+.course.selected {
+    background-color: darkolivegreen;
+    color: white;
+    border-left-color: #2d4a0e;
+}
+
+.course .price-tag {
+    font-size: 0.9rem;
+    font-weight: 700;
+    opacity: 0.8;
+}
+
+.course.selected .price-tag {
+    opacity: 1;
+}
+
+.course .check-icon {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 2px solid darkolivegreen;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    color: darkolivegreen;
+    flex-shrink: 0;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.course.selected .check-icon {
+    background: white;
+    border-color: white;
+    color: darkolivegreen;
+}
+
+.course-name {
+    flex: 1;
+    margin: 0 12px;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 20px 0;
+}
+.actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 4px;
+}
+
+button {
+    padding: 10px 18px;
+    border: none;
+    background-color: darkolivegreen;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 0.95rem;
+    transition: background 0.2s, transform 0.1s;
+}
+
+button:hover {
+    background-color: green;
+    transform: translateY(-1px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+.btn-secondary {
+    background-color: #111827;
+}
+
+.btn-secondary:hover {
+    background-color: #1f2937;
+}
+
+.result {
+    font-weight: 700;
+    margin-top: 14px;
+    padding: 12px 16px;
+    background: white;
+    border-left: 5px solid darkolivegreen;
+    border-radius: 6px;
+    font-size: 1rem;
+    color: #1a1a1a;
+    min-height: 46px;
+    transition: all 0.3s;
+    display: none;
+}
+
+.result.visible {
+    display: block;
+}
+
+.result span {
+    color: darkolivegreen;
+}
+
+.hint {
+    font-size: 0.82rem;
+    color: #888;
+    margin: 6px 0 0 2px;
+    font-weight: 600;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+    <svg class="logo-svg" viewBox="0 0 400 120">
+        <defs>
+            <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#2E7D32" />
+                <stop offset="100%" stop-color="#1B5E20" />
+            </linearGradient>
+            <linearGradient id="bookGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#FFFFFF" />
+                <stop offset="100%" stop-color="#F1F8E9" />
+            </linearGradient>
+        </defs>
+
+        <circle cx="60" cy="60" r="45" fill="url(#grad)" />
+
+        <g>
+            <rect x="40" y="45" width="40" height="30" fill="url(#bookGrad)" rx="3" />
+            <line x1="60" y1="45" x2="60" y2="75" stroke="#1B5E20" stroke-width="1.5" />
+            <rect x="40" y="45" width="5" height="30" fill="#C9A227" rx="2" />
+        </g>
+
+        <g>
+            <polygon points="50,35 70,35 75,38 45,38" fill="#1B5E20" />
+            <ellipse cx="60" cy="38" rx="8" ry="3" fill="#1B5E20" />
+            <line x1="75" y1="37" x2="78" y2="42" stroke="#C9A227" stroke-width="1.5" />
+            <circle cx="78" cy="43" r="2" fill="#C9A227" />
+        </g>
+
+        <text x="120" y="55" font-size="26" font-weight="bold" fill="white">
+            College Made
+            <tspan fill="#C9A227">Easy</tspan>
+        </text>
+
+        <text x="120" y="78" font-size="14" fill="#E8F5E9" font-style="italic">
+            Your Gateway to Knowledge
+        </text>
+    </svg>
+
+    <div class="header-center">
+        <h1>Courses Directory</h1>
+        <p>Select courses to enroll</p>
+    </div>
+
+</header>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="courses.html">Courses</a>
+    <a href="contact.html">Contact</a>
+    <a href="login.html">Login</a>
+    <a href="#">About</a>
+</nav>
+
+<div class="container">
+
+    <h2>Available Courses</h2>
+    <p class="hint">Click on a course to select / deselect it</p>
+
+    <div class="course" data-price="0"    onclick="toggleCourse(this)">
+        <div class="check-icon">✓</div>
+        <div class="course-name">HTML</div>
+        <div class="price-tag">₹0 (Free)</div>
+    </div>
+
+    <div class="course" data-price="499"  onclick="toggleCourse(this)">
+        <div class="check-icon">✓</div>
+        <div class="course-name">CSS</div>
+        <div class="price-tag">₹499</div>
+    </div>
+
+    <div class="course" data-price="999"  onclick="toggleCourse(this)">
+        <div class="check-icon">✓</div>
+        <div class="course-name">JavaScript</div>
+        <div class="price-tag">₹999</div>
+    </div>
+
+    <div class="course" data-price="1999" onclick="toggleCourse(this)">
+        <div class="check-icon">✓</div>
+        <div class="course-name">React</div>
+        <div class="price-tag">₹1999</div>
+    </div>
+
+    <div class="course" data-price="1499" onclick="toggleCourse(this)">
+        <div class="check-icon">✓</div>
+        <div class="course-name">Node.js</div>
+        <div class="price-tag">₹1499</div>
+    </div>
+
+    <hr>
+
+    <h2>Actions</h2>
+
+    <div class="actions">
+        <button onclick="calculateTotal()">Total Price (Rest)</button>
+        <button onclick="findMinMax()">Min &amp; Max Price (Spread)</button>
+        <button class="btn-secondary" onclick="clearSelection()">Clear Selection</button>
+    </div>
+
+    <p class="result" id="output"></p>
+
+</div>
+
+<script>
+
+function toggleCourse(el) {
+    el.classList.toggle('selected');
+    document.getElementById('output').classList.remove('visible');
+}
+
+function getSelectedPrices() {
+    const selected = document.querySelectorAll('.course.selected');
+    return Array.from(selected).map(el => parseInt(el.dataset.price));
+}
+
+function totalPrice(...prices) {
+    return prices.reduce((sum, p) => sum + p, 0);
+}
+
+function calculateTotal() {
+    const prices = getSelectedPrices();
+    const output = document.getElementById('output');
+
+    if (prices.length === 0) {
+        output.innerHTML = 'Please select at least one course.';
+        output.classList.add('visible');
+        return;
+    }
+
+    const total = totalPrice(...prices);
+    output.innerHTML = `Total Price of <span>${prices.length} course(s)</span>: <span>₹${total}</span>`;
+    output.classList.add('visible');
+}
+
+function findMinMax() {
+    const prices = getSelectedPrices();
+    const output = document.getElementById('output');
+
+    if (prices.length === 0) {
+        output.innerHTML = 'Please select at least one course.';
+        output.classList.add('visible');
+        return;
+    }
+
+    const min = Math.min(...prices);
+    const max = Math.max(...prices);
+    output.innerHTML = `Min Price: <span>₹${min}</span> &nbsp;|&nbsp; Max Price: <span>₹${max}</span>`;
+    output.classList.add('visible');
+}
+
+function clearSelection() {
+    document.querySelectorAll('.course.selected').forEach(el => el.classList.remove('selected'));
+    const output = document.getElementById('output');
+    output.classList.remove('visible');
+}
+
+</script>
+
+</body>
+</html>
