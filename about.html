@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About - College Made Easy</title>
+<meta name="description" content="Learn about College Made Easy - Your Gateway to Knowledge. Discover our mission and team.">
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+header {
+    background-color: darkolivegreen;
+    color: white;
+    padding: 30px 0;
+    position: relative;
+    text-align: center;
+}
+
+.logo-svg {
+    position: absolute;
+    left: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 260px;
+}
+
+.header-center h1 {
+    margin: 0;
+    font-size: 32px;
+}
+
+.header-center p {
+    margin: 5px 0 0;
+    font-size: 14px;
+}
+.about-hero {
+    background: linear-gradient(
+        135deg,
+        rgba(85,107,47,0.92),
+        rgba(27,94,32,0.88)
+    ),
+    url("banner.jpeg");
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 60px 20px 50px;
+}
+
+.about-hero h1 {
+    font-size: 42px;
+    margin: 0 0 10px;
+    letter-spacing: 1px;
+    animation: fadeDown 0.8s ease;
+}
+
+.about-hero p {
+    font-size: 18px;
+    max-width: 650px;
+    margin: 0 auto;
+    line-height: 1.7;
+    animation: fadeUp 0.8s ease;
+}
+
+.section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px 20px;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.section-title h2 {
+    font-size: 30px;
+    color: #1f3c88;
+    margin: 0 0 8px;
+}
+
+.section-title .bar {
+    width: 60px;
+    height: 4px;
+    background: darkolivegreen;
+    margin: 0 auto 10px;
+    border-radius: 2px;
+}
+
+.section-title p {
+    color: #555;
+    font-size: 15px;
+}
+
+.mv-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.mv-card {
+    background: white;
+    padding: 30px 25px;
+    border-radius: 10px;
+    border-top: 5px solid darkolivegreen;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    transition: 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.mv-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(85,107,47,0.04), transparent);
+    transition: 0.5s;
+}
+
+.mv-card:hover::before {
+    left: 100%;
+}
+
+.mv-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.mv-card .icon {
+    font-size: 40px;
+    margin-bottom: 12px;
+    display: inline-block;
+}
+
+.mv-card h3 {
+    color: darkolivegreen;
+    font-size: 22px;
+    margin: 0 0 10px;
+}
+
+.mv-card p {
+    color: #444;
+    line-height: 1.7;
+    margin: 0;
+}
+
+
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.team-card {
+    background: white;
+    border-radius: 10px;
+    border-top: 5px solid darkolivegreen;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    text-align: center;
+    padding: 30px 20px 25px;
+    transition: 0.3s;
+}
+
+.team-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.team-avatar {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #2E7D32, #1B5E20);
+    color: white;
+    font-size: 36px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+    border: 3px solid #C9A227;
+}
+
+.team-card h3 {
+    color: #1f3c88;
+    margin: 0 0 5px;
+    font-size: 18px;
+}
+
+.team-card .role {
+    color: darkolivegreen;
+    font-weight: bold;
+    font-size: 14px;
+    margin: 0 0 10px;
+}
+
+.team-card p {
+    color: #555;
+    font-size: 13px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+@keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: none;
+}
+
+.about-page-body img {
+    width: auto;
+    height: auto;
+}
+
+@media (max-width: 900px) {
+    .mv-grid { grid-template-columns: 1fr; }
+    .team-grid { grid-template-columns: 1fr; }
+    
+}
+
+@media (max-width: 600px) {
+    .about-hero h1 { font-size: 28px; }
+    .logo-svg { position: static; transform: none; width: 200px; margin: 0 auto 10px; display: block; }
+}
+
+</style>
+</head>
+
+<body class="about-page-body">
+
+<header>
+
+    <svg class="logo-svg" viewBox="0 0 400 120">
+        <defs>
+            <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#2E7D32" />
+                <stop offset="100%" stop-color="#1B5E20" />
+            </linearGradient>
+
+            <linearGradient id="bookGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#FFFFFF" />
+                <stop offset="100%" stop-color="#F1F8E9" />
+            </linearGradient>
+        </defs>
+
+        <circle cx="60" cy="60" r="45" fill="url(#grad)" />
+
+        <g>
+            <rect x="40" y="45" width="40" height="30" fill="url(#bookGrad)" rx="3" />
+            <line x1="60" y1="45" x2="60" y2="75" stroke="#1B5E20" stroke-width="1.5" />
+            <rect x="40" y="45" width="5" height="30" fill="#C9A227" rx="2" />
+        </g>
+
+        <g>
+            <polygon points="50,35 70,35 75,38 45,38" fill="#1B5E20" />
+            <ellipse cx="60" cy="38" rx="8" ry="3" fill="#1B5E20" />
+            <line x1="75" y1="37" x2="78" y2="42" stroke="#C9A227" stroke-width="1.5" />
+            <circle cx="78" cy="43" r="2" fill="#C9A227" />
+        </g>
+
+        <text x="120" y="55" font-size="26" font-weight="bold" fill="white">
+            College Made 
+            <tspan fill="#C9A227">Easy</tspan>
+        </text>
+
+        <text x="120" y="78" font-size="14" fill="#E8F5E9" font-style="italic">
+            Your Gateway to Knowledge
+        </text>
+    </svg>
+
+    <div class="header-center">
+        <h1>My Learning Hub</h1>
+        <p>About Us</p>
+    </div>
+
+</header>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="courses.html">Courses</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="login.html">Login</a>
+</nav>
+
+<div class="about-hero">
+    <h1>About College Made Easy</h1>
+    <p>
+        We are on a mission to make quality education accessible, engaging, 
+        and career-oriented for every aspiring developer and student.
+    </p>
+</div>
+
+
+<div class="section fade-in" id="missionSection">
+    <div class="section-title">
+        <h2>Our Mission & Vision</h2>
+        <div class="bar"></div>
+        <p>What drives us every day</p>
+    </div>
+
+    <div class="mv-grid">
+        <div class="mv-card">
+            <h3>Our Mission</h3>
+            <p>
+                To bridge the gap between traditional education and industry requirements 
+                by providing high-quality, structured, and affordable online courses in 
+                web technologies and programming. We believe every student deserves access 
+                to world-class learning resources.
+            </p>
+        </div>
+        <div class="mv-card">
+            <h3>Our Vision</h3>
+            <p>
+                To become the leading online platform for college students seeking to enhance 
+                their technical skills, foster innovation, and build successful careers in 
+                the technology industry — one course at a time.
+            </p>
+        </div>
+        <div class="mv-card">
+            <h3>Our Approach</h3>
+            <p>
+                We combine theory with hands-on projects, live doubt-solving sessions, 
+                and industry-relevant curriculum. Our courses are designed by experienced 
+                professionals who understand what companies look for.
+            </p>
+        </div>
+        <div class="mv-card">
+            <h3>Our Values</h3>
+            <p>
+                Integrity, inclusivity, and innovation form the cornerstone of everything 
+                we do. We are committed to creating a supportive learning environment 
+                where every student can thrive and grow.
+            </p>
+        </div>
+    </div>
+</div>
+<div class="section fade-in" id="teamSection">
+    <div class="section-title">
+        <h2>Meet Our Team</h2>
+        <div class="bar"></div>
+        <p>The people behind your learning journey</p>
+    </div>
+
+    <div class="team-grid">
+        <div class="team-card">
+            <div class="team-avatar">AV</div>
+            <h3>Ankit Vishwakarma</h3>
+            <p class="role">Frontend Developer</p>
+            <p>Crafts pixel-perfect interfaces and brings designs to life with modern CSS and JavaScript.</p>
+        </div>
+        <div class="team-card">
+            <div class="team-avatar">AS</div>
+            <h3>Atharva Sawale</h3>
+            <p class="role">Lead Developer</p>
+            <p>Full-stack developer with a passion for building scalable EdTech platforms and clean user experiences.</p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2026 My Learning Hub</p>
+    <p>Email: support@mylearninghub.com</p>
+</footer>
+
+
+<script>
+
+const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.fade-in').forEach(function(el) {
+    observer.observe(el);
+});
+
+
+(function() {
+    const hour = new Date().getHours();
+    let greeting;
+
+    if (hour < 12) {
+        greeting = "Good Morning!";
+    } else if (hour < 17) {
+        greeting = "Good Afternoon!";
+    } else {
+        greeting = "Good Evening!";
+    }
+
+    const heroP = document.querySelector('.about-hero p');
+    if (heroP) {
+        heroP.innerText = greeting + " " + heroP.innerText;
+    }
+})();
+
+</script>
+
+</body>
+</html>
